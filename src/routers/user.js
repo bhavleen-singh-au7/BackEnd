@@ -32,6 +32,7 @@ const {
   openUserProfile,
   followUser,
   unFollowUser,
+  getUserNames,
 } = UserControl;
 
 const {
