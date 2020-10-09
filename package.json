@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/attainu/project-bhavleen-singh-au7#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "bcrypt": "^5.0.0",
     "cloudinary": "^1.23.0",
     "config": "^3.3.2",
