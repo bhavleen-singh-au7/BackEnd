@@ -1,6 +1,7 @@
 import sharp from "sharp";
 import User from "../models/user";
 import uploadFileToCloudinary from "../utils/cloudinaryUpload";
+import cloudinary from "../config/cloudinary";
 
 class AvatarControl {
   static async uploadAvatar(req, res) {
@@ -11,6 +12,12 @@ class AvatarControl {
           .png()
           .toBuffer();
 
+        if (req.user.avatar.public_id) {
+          await cloudinary.v2.uploader.destroy(
+            req.user.avatar.public_id
+          );
+          console.log("success");
+        }
         const {
           url,
           public_id,

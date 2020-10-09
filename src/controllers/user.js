@@ -20,23 +20,28 @@ class UserControl {
   }
 
   static async checkForUsername(req, res) {
-    let user = await User.findOne({
-      username: req.body.username,
-    });
-    if (user) {
-      return res.status(200).json({
+    try {
+      let user = await User.findOne({
+        username: req.body.username,
+      });
+      if (user) {
+        return res.status(200).json({
+          statusCode: 200,
+          message: "Username exists",
+          result: true,
+          error: "",
+        });
+      }
+      res.status(200).json({
         statusCode: 200,
-        message: "Username exists",
-        result: true,
+        message: "Username doesn't exist",
+        result: false,
         error: "",
       });
+    } catch (e) {
+      console.log(e);
+      res.json(e);
     }
-    res.status(200).json({
-      statusCode: 200,
-      message: "Username doesn't exist",
-      result: false,
-      error: "",
-    });
   }
 
   static async updateUserProfile(req, res) {
@@ -44,7 +49,6 @@ class UserControl {
 
     const allowedUpdates = [
       "name",
-      "email",
       "username",
       "age",
       "bio",
@@ -65,7 +69,7 @@ class UserControl {
       );
       await req.user.save();
       res.json({
-        profile: req.user,
+        user: req.user,
         Result: "Updated Successfully",
       });
     } catch (e) {
