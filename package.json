@@ -4,10 +4,10 @@
   "description": "One destination for photographers",
   "main": "src/index.js",
   "scripts": {
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./src -s",
-    "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/index.js"
+    "start": "npm run build && node ./dist/index.js",
+    "build": "npm run clean && npm run babel-build",
+    "babel-build": "babel -d ./dist ./src -s --copy-files",
+    "clean": "rimraf ./dist && mkdir dist"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,10 @@
   "homepage": "https://github.com/attainu/project-bhavleen-singh-au7#readme",
   "dependencies": {
     "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "bcrypt": "^5.0.0",
     "cloudinary": "^1.23.0",
     "config": "^3.3.2",
@@ -38,14 +42,11 @@
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.4.11",
     "request": "^2.88.2",
+    "rimraf": "^3.0.2",
     "sharp": "^0.26.1",
     "validator": "^13.1.17"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/node": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.11.5",
-    "@babel/preset-env": "^7.11.5",
     "nodemon": "^2.0.4"
   },
   "keywords": []
