@@ -27,7 +27,7 @@ class AvatarControl {
         req.user.save();
         res.status(200).json({
           message: "Image uploaded successfully",
-          data: { imageUrl: url },
+          data: req.user.avatar,
         });
       }
     } catch (e) {

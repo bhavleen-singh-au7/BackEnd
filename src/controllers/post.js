@@ -222,7 +222,7 @@ export default class PostControl {
         avatar: req.user.avatar.imageUrl,
         userId: req.user._id,
       };
-      post.comments.unshift(newComment);
+      post.comments.push(newComment);
       await post.save();
       res.json(post.comments);
     } catch (err) {
