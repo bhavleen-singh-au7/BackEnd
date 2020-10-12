@@ -26,7 +26,6 @@ export default class PostControl {
         });
       }
     } catch (e) {
-      console.log(e);
       res.status(400).json({
         error: e.message,
       });
@@ -65,7 +64,6 @@ export default class PostControl {
           .populate("owner")
           .sort({ createdAt: -1 });
       }
-      console.log(posts);
       res.json({ posts });
     } catch (e) {
       console.log(e);
@@ -254,7 +252,6 @@ export default class PostControl {
         (comment) =>
           comment._id.toString() !== req.params.comment_id
       );
-      console.log(post);
       await post.save();
       return res.json(post.comments);
     } catch (err) {

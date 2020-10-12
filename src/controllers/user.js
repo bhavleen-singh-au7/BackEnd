@@ -39,7 +39,6 @@ class UserControl {
         error: "",
       });
     } catch (e) {
-      console.log(e);
       res.json(e);
     }
   }
@@ -133,7 +132,6 @@ class UserControl {
         followers: user.followers,
       });
     } catch (e) {
-      console.log(e);
       res.status(400).json({ error: e.message });
     }
   }
@@ -160,7 +158,6 @@ class UserControl {
         followers: user.followers,
       });
     } catch (e) {
-      console.log(e);
       res.status(400).json({ error: e.message });
     }
   }

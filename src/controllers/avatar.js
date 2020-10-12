@@ -16,7 +16,6 @@ class AvatarControl {
           await cloudinary.v2.uploader.destroy(
             req.user.avatar.public_id
           );
-          console.log("success");
         }
         const {
           url,
