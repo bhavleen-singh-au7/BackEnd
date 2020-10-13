@@ -74,7 +74,7 @@ export default class PostControl {
     try {
       const posts = await Post.find()
         .populate("owner")
-        .sort({ createdAt: 1 });
+        .sort({ createdAt: -1 });
       res.json(posts);
     } catch (err) {
       res.status(500).send("Server Error");
